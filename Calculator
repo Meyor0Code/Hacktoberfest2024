@@ -1,0 +1,66 @@
+import math
+
+def perform_operation(choice, num1, num2=None):
+    if choice == 1:
+        return num1 + num2
+    elif choice == 2:
+        return num1 - num2
+    elif choice == 3:
+        return num1 * num2
+    elif choice == 4:
+        if num2 == 0:
+            return "Error: Division by zero is not allowed."
+        return num1 / num2
+    elif choice == 5:
+        return num1 ** num2
+    elif choice == 6:
+        return math.sqrt(num1)
+    elif choice == 7:
+        return math.sin(num1)
+    elif choice == 8:
+        return math.cos(num1)
+    elif choice == 9:
+        return math.tan(num1)
+    elif choice == 10:
+        return math.log10(num1)
+
+def calculator():
+    while True:
+        print("\nChoose an operation:")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Exponentiation")
+        print("6. Square Root")
+        print("7. Sine")
+        print("8. Cosine")
+        print("9. Tangent")
+        print("10. Logarithm (base 10)")
+        print("11. Quit")
+
+        try:
+            choice = int(input("Enter your choice (1-11): "))
+            if choice == 11:
+                print("Exiting...")
+                break
+            if choice < 1 or choice > 11:
+                print("Invalid choice. Please enter a number between 1 and 11.")
+                continue
+
+            num1 = float(input("Enter the first number: "))
+
+            # For operations needing a second number
+            if choice in [1, 2, 3, 4, 5]:
+                num2 = float(input("Enter the second number: "))
+                result = perform_operation(choice, num1, num2)
+            else:
+                result = perform_operation(choice, num1)
+
+            print("Result:", result)
+
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+
+if __name__ == "__main__":
+    calculator()
